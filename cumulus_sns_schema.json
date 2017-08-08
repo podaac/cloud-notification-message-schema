@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "cumulus-message",
+  "description": "A cumulus SNS Message to trigger processing",
+  "type": "object",
+  "properties": {
+    "provider": {
+      "description": "the name of the provider producing these files. This is informational only and is not used by the cumulus framework",
+      "type": "string"
+    },
+    "collection": {
+      "description": "The collection for which these granules will belong",
+      "type": "string"
+    },
+    "bucket": {
+      "description": "href location of the s3 bucket to ingest from. Only used when individual granules are not specified individually.",
+      "type": "string"
+    },
+    "granules": {
+      "description": "array of granule objects",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "granuleName": {
+            "description": "Identifier/name of the granule",
+            "type": "string"
+          },
+          "dataVersion": {
+            "description": "Version of this granule ",
+            "type": "string"
+          },
+          "files": {
+            "description": "array of files that make up this granule",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "filetype": {
+                  "description": "",
+                  "type": "string",
+                  "enum": [
+                    "data",
+                    "checksum",
+                    "browse",
+                    "metadata"
+                  ]
+                },
+                "href": {
+                  "description": "",
+                  "type": "string"
+                },
+                "checksum-type": {
+                  "description": "Type of the checksum",
+                  "type": "string"
+                },
+                "checksum": {
+                  "description": "",
+                  "type": "string"
+                },
+                "fileSize": {
+                  "description": "",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "filetype",
+                "href",
+                "fileSize"
+              ]
+            }
+          }
+        },
+        "required": [
+          "granuleName",
+          "dataVersion",
+          "files"
+        ]
+      }
+    }
+  },
+  "required": [
+    "collection"
+  ]
+}

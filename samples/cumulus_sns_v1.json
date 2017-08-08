@@ -1,0 +1,24 @@
+{
+  "provider": "PODAAC_SWOT",
+  "collection": "COLLECTION_SHORTNAME",
+  "granules": [
+    {
+      "granuleName": "sampleGranuleName001",
+      "dataVersion": "001",
+      "files": [
+        {
+          "filetype": "data",
+          "href": "s3://path/to/file",
+          "checksum-type": "md5",
+          "checksum": "4241jafkjaj14jasjf",
+          "fileSize": 123456
+        },
+        {
+          "filetype": "checksum",
+          "href": "s3://path/to/file.md5",
+          "fileSize": 354
+        }
+      ]
+    }
+  ]
+}

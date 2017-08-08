@@ -1,0 +1,5 @@
+{
+  "provider": "PODAAC_SWOT",
+  "collection": "COLLECTION_SHORTNAME",
+  "bucket": "s3://path/to/files"
+}
