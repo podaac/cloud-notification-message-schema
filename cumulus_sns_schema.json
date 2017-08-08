@@ -79,7 +79,8 @@
       }
     }
   },
-  "required": [
-    "collection"
-  ]
+  "oneOf": [
+        {"required": [“collection”, “granules”]},
+        {"required": [“collection”, “bucket”]}
+    ]
 }
