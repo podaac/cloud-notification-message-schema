@@ -4,6 +4,7 @@
   "granuleCount": 3,
   "granules": [
     {
+      "identifier": "1234-abcd-efg0-9876",
       "granuleName": "sampleGranuleName001",
       "dataVersion": "001",
       "files": [
@@ -22,6 +23,7 @@
       ]
     },
     {
+      "identifier": "2234-abcd-efg0-9876",
       "granuleName": "sampleGranuleName002",
       "dataVersion": "001",
       "files": [
@@ -45,6 +47,7 @@
       ]
     },
     {
+      "identifier": "3234-abcd-efg0-9876",
       "granuleName": "sampleGranuleName003",
       "dataVersion": "001",
       "files": [

@@ -3,6 +3,7 @@
   "collection": "COLLECTION_SHORTNAME",
   "granules": [
     {
+      "identifier": "1234-abcd-efg0-9876",
       "granuleName": "sampleGranuleName001",
       "dataVersion": "001",
       "files": [

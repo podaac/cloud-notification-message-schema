@@ -1,5 +1,6 @@
 {
   "provider": "PODAAC_SWOT",
   "collection": "COLLECTION_SHORTNAME",
+  "identifier": "SDS-1234-abcd-efg0-9876",
   "bucket": "s3://path/to/files"
 }

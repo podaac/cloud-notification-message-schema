@@ -4,6 +4,10 @@
   "description": "A cumulus SNS Message to trigger processing",
   "type": "object",
   "properties": {
+    "identifier": {
+      "description":"Unique identifier for the message as a whole. It is usally the senders responsibility to ensure uniqueness. This identifier can be used in response messages to provide tracability.",
+      "type":"string"
+    }
     "provider": {
       "description": "the name of the provider producing these files. This is informational only and is not used by the cumulus framework",
       "type": "string"
@@ -22,6 +26,10 @@
       "items": {
         "type": "object",
         "properties": {
+           "identifier": {
+             "description":"Unique identifier for the granule. It is usally the senders responsibility to ensure uniqueness. This identifier can be used in response messages to provide tracability.",
+             "type":"string"
+          },
           "granuleName": {
             "description": "Identifier/name of the granule",
             "type": "string"
@@ -72,6 +80,7 @@
           }
         },
         "required": [
+          "identifier",
           "granuleName",
           "dataVersion",
           "files"
@@ -81,6 +90,6 @@
   },
   "oneOf": [
         {"required": [“collection”, “granules”]},
-        {"required": [“collection”, “bucket”]}
+        {"required": [“collection”, “bucket”, "identifier"]}
     ]
 }
