@@ -1,95 +1,125 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "cumulus-message",
-  "description": "A cumulus SNS Message to trigger processing",
+  "description": "A cumulus SNS Message to trigger or respond to processing. The current schema only allows for a bucket to be identified OR for a single granule to be identified.",
   "type": "object",
   "properties": {
+    "ingestTime": {
+      "description": "Time ingestion was attempted by ingest system",
+      "type":"string"
+    },
+    "deliveryTime": {
+      "description": "Time message was sent to ingest system",
+      "type":"string"
+    },
     "identifier": {
       "description":"Unique identifier for the message as a whole. It is usally the senders responsibility to ensure uniqueness. This identifier can be used in response messages to provide tracability.",
       "type":"string"
-    }
+    },
+    "collection": {
+      "description": "The collection for which these granules will belong. Could be the same as URS or some other identifier.",
+      "type": "string"
+    },
     "provider": {
       "description": "the name of the provider producing these files. This is informational only and is not used by the cumulus framework",
       "type": "string"
     },
-    "collection": {
-      "description": "The collection for which these granules will belong",
-      "type": "string"
-    },
     "bucket": {
-      "description": "href location of the s3 bucket to ingest from. Only used when individual granules are not specified individually.",
+      "description": "location of the s3 bucket to ingest from.",
       "type": "string"
     },
-    "granules": {
-      "description": "array of granule objects",
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-           "identifier": {
-             "description":"Unique identifier for the granule. It is usally the senders responsibility to ensure uniqueness. This identifier can be used in response messages to provide tracability.",
-             "type":"string"
-          },
-          "granuleName": {
-            "description": "Identifier/name of the granule",
-            "type": "string"
-          },
-          "dataVersion": {
-            "description": "Version of this granule ",
-            "type": "string"
-          },
-          "files": {
-            "description": "array of files that make up this granule",
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "filetype": {
-                  "description": "",
-                  "type": "string",
-                  "enum": [
-                    "data",
-                    "checksum",
-                    "browse",
-                    "metadata"
-                  ]
-                },
-                "href": {
-                  "description": "",
-                  "type": "string"
-                },
-                "checksum-type": {
-                  "description": "Type of the checksum",
-                  "type": "string"
-                },
-                "checksum": {
-                  "description": "",
-                  "type": "string"
-                },
-                "fileSize": {
-                  "description": "",
-                  "type": "number"
-                }
-              },
-              "required": [
-                "filetype",
-                "href",
-                "fileSize"
-              ]
-            }
-          }
+    "response":{
+      "description": "The response message type sent. Can be a success message or error message. Akin to both the PAN and PDRD",
+      "type": "object",
+      "properties": {
+        "status":{
+          "description":"Successful or error.",
+          "type":"string",
+          "enum": [
+            "SUCCESS",
+            "FAILURE"
+          ]
         },
-        "required": [
-          "identifier",
-          "granuleName",
-          "dataVersion",
-          "files"
-        ]
-      }
+        "errorCode": {
+          "description":"Error message. Success messages can be ignored.",
+          "type":"string",
+          "enum": [
+            "INGEST_ERROR",
+            "ARCHIVE_ERROR",
+            "UNKNOWN_ERROR",
+            "OTHER"
+          ]
+        },
+        "errorMessage":{
+          "description":"The message error for the failure that occured.",
+          "type":"string"
+        }
+      },
+      "required": [
+          "status"
+      ]
+    },
+    "granule": {
+      "type": "object",
+      "properties": {
+        "granuleName": {
+          "description": "Identifier/name of the granule",
+          "type": "string"
+        },
+        "dataVersion": {
+          "description": "Version of this granule ",
+          "type": "string"
+        },
+        "files": {
+          "description": "array of files that make up this granule",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "filetype": {
+                "description": "",
+                "type": "string",
+                "enum": [
+                  "data",
+                  "checksum",
+                  "browse",
+                  "metadata"
+                ]
+              },
+              "key": {
+                "description": "bucket +  key = file location",
+                "type": "string"
+              },
+              "checksum-type": {
+                "description": "Type of the checksum",
+                "type": "string"
+              },
+              "checksum": {
+                "description": "",
+                "type": "string"
+              },
+              "fileSize": {
+                "description": "",
+                "type": "number"
+              }
+            },
+            "required": [
+              "filetype",
+              "key",
+              "fileSize"
+            ]
+          }
+        }
+      },
+      "required": [
+        "granuleName",
+        "dataVersion",
+        "files"
+      ]
     }
   },
   "oneOf": [
-        {"required": [“collection”, “granules”]},
-        {"required": [“collection”, “bucket”, "identifier"]}
-    ]
+    {"required": ["deliveryTime","collection", "identifier", "bucket"]},
+    {"required": ["ingestTime","deliveryTime","collection", "response"] }
+  ]
 }

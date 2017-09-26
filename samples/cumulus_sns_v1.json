@@ -1,25 +1,27 @@
 {
   "provider": "PODAAC_SWOT",
-  "collection": "COLLECTION_SHORTNAME",
-  "granules": [
+  "collection": "SWOT_Prod_l2:1",
+  "bucket":"cumulus-dev-a4d38f59-5e57-590c-a2be-58640db02d91",
+  "ingestTime":"2017-09-30T03:45:29.791198",
+  "deliveryTime":"2017-09-30T03:42:29.791198",
+  "identifier": "1234-abcd-efg0-9876",
+  "granule":
     {
-      "identifier": "1234-abcd-efg0-9876",
       "granuleName": "sampleGranuleName001",
       "dataVersion": "001",
       "files": [
         {
           "filetype": "data",
-          "href": "s3://path/to/file",
+          "key": "prod_20170926T11:30:36/production_file.nc",
           "checksum-type": "md5",
           "checksum": "4241jafkjaj14jasjf",
           "fileSize": 123456
         },
         {
           "filetype": "checksum",
-          "href": "s3://path/to/file.md5",
+          "key": "prod_20170926T11:30:36/production_file.md5",
           "fileSize": 354
         }
       ]
     }
-  ]
 }

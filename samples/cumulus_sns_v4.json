@@ -5,6 +5,8 @@
   "deliveryTime":"2017-09-30T03:42:29.791198",
   "identifier": "1234-abcd-efg0-9876",
   "response": {
-    "status":"SUCCESS"
+    "status":"FAILURE",
+    "errorCode": "INGEST_ERROR",
+    "errorMessage": "File [cumulus-dev-a4d38f59-5e57-590c-a2be-58640db02d91/prod_20170926T11:30:36/production_file.nc] did not match gve checksum value."
   }
 }
