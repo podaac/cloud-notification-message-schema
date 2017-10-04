@@ -18,9 +18,11 @@
           "fileSize": 123456
         },
         {
-          "filetype": "checksum",
-          "key": "prod_20170926T11:30:36/production_file.md5",
-          "fileSize": 354
+          "filetype": "browse",
+          "key": "prod_20170926T11:30:36/production_file.png",
+          "checksum-type": "md5",
+          "checksum": "addjd872342bfbf",
+          "fileSize": 12345
         }
       ]
     }
