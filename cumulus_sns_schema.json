@@ -76,12 +76,11 @@
           "items": {
             "type": "object",
             "properties": {
-              "filetype": {
-                "description": "",
+              "fileType": {
+                "description": "The type of file. science files (netcdf, HDF, binary) should use the 'data' type. More can be added if need and consensus demand.",
                 "type": "string",
                 "enum": [
                   "data",
-                  "checksum",
                   "browse",
                   "metadata"
                 ]
@@ -90,23 +89,24 @@
                 "description": "bucket +  key = file location",
                 "type": "string"
               },
-              "checksum-type": {
-                "description": "Type of the checksum",
+              "checksumType": {
+                "description": "Type of the checksum (e.g. md5). Optional. If no checksumType is defined for a file, it is assumed to be md5",
                 "type": "string"
               },
               "checksum": {
-                "description": "",
+                "description": "Checksum of the file.",
                 "type": "string"
               },
               "fileSize": {
-                "description": "",
+                "description": "Size, in bytes, of the file.",
                 "type": "number"
               }
             },
             "required": [
-              "filetype",
+              "fileType",
               "key",
               "fileSize"
+              "checksum"
             ]
           }
         }
