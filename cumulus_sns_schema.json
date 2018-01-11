@@ -1,15 +1,19 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "cumulus-message",
-  "description": "A cumulus SNS Message to trigger or respond to processing. The current schema only allows for a bucket to be identified OR for a single granule to be identified.",
+  "description": "A cumulus SNS Message to trigger or respond to processing. The current schema only allows for single granule to be identified.",
   "type": "object",
   "properties": {
+    "receivedTime": {
+      "description": "Time message was received by the ingest system",
+      "type":"string"
+    },
     "ingestTime": {
-      "description": "Time ingestion was attempted by ingest system",
+      "description": "Time ingestion was finished by ingest system",
       "type":"string"
     },
     "deliveryTime": {
-      "description": "Time message was sent to ingest system",
+      "description": "Time message was sent to ingest system's SNS topic",
       "type":"string"
     },
     "identifier": {
@@ -82,11 +86,20 @@
                 "enum": [
                   "data",
                   "browse",
-                  "metadata"
+                  "metadata",
+                  "qa"
                 ]
+              },
+              "bucket": {
+                "description": "AWS bucket containing this object",
+                "type": "string"
               },
               "key": {
                 "description": "bucket +  key = file location",
+                "type": "string"
+              },
+              "fileName": {
+                "description": "The human readable filename that this file represents. ",
                 "type": "string"
               },
               "checksumType": {
@@ -105,8 +118,9 @@
             "required": [
               "fileType",
               "key",
-              "fileSize"
-              "checksum"
+              "fileSize",
+              "checksum",
+              "fileName"
             ]
           }
         }
@@ -119,7 +133,7 @@
     }
   },
   "oneOf": [
-    {"required": ["deliveryTime","collection", "identifier", "bucket"]},
-    {"required": ["ingestTime","deliveryTime","collection", "response"] }
+    {"required": ["deliveryTime","collection", "identifier", "bucket", "granule"]},
+    {"required": ["receivedTime","ingestTime","deliveryTime","collection", "response"] }
   ]
 }

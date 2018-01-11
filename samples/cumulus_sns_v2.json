@@ -21,7 +21,7 @@
           "fileSize": 123456
         },
         {
-          "comment":"this file is associated with the bucket given locally, which overrules the root level (default) bucket",
+          "comment":"this file is associated with the bucket given locally, which overrules the root level (default) .bucket",
           "fileType": "browse",
           "key": "prod_20170926T11:30:36/production_file.png",
           "bucket":"cumulus-dev-browse-a4d38f59-5e57-590c-a2be-58640db02d91",
