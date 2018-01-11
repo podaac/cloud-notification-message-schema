@@ -6,4 +6,4 @@ The cumulus SNS schema is used to interface providers with cumulus/AWS ingestion
 
 For up to date documentation, see:
 
-![Doc link](https://wiki.earthdata.nasa.gov/pages/editpage.action?pageId=95291467)
+[Official CNM Documentation](https://wiki.earthdata.nasa.gov/pages/editpage.action?pageId=95291467)
