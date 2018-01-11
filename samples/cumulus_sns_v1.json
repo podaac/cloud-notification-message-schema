@@ -11,15 +11,17 @@
       "dataVersion": "001",
       "files": [
         {
-          "filetype": "data",
+          "fileType": "data",
           "key": "prod_20170926T11:30:36/production_file.nc",
+          "fileName":"production_file.nc",
           "checksum-type": "md5",
           "checksum": "4241jafkjaj14jasjf",
           "fileSize": 123456
         },
         {
-          "filetype": "browse",
+          "fileType": "browse",
           "key": "prod_20170926T11:30:36/production_file.png",
+          "fileName":"production_file.png",
           "checksum-type": "md5",
           "checksum": "addjd872342bfbf",
           "fileSize": 12345

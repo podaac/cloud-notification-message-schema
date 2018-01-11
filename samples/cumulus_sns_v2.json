@@ -1,8 +1,35 @@
 {
+  "comment":"This represents a grnaule that has files in multiple buckets",
   "provider": "PODAAC_SWOT",
   "collection": "SWOT_Prod_l2:1",
   "bucket":"cumulus-dev-a4d38f59-5e57-590c-a2be-58640db02d91",
   "ingestTime":"2017-09-30T03:45:29.791198",
   "deliveryTime":"2017-09-30T03:42:29.791198",
   "identifier": "1234-abcd-efg0-9876",
+  "granule":
+    {
+      "granuleName": "sampleGranuleName001",
+      "dataVersion": "001",
+      "files": [
+        {
+          "comment":"This file is associated with the default bucket listed at the root level",
+          "fileType": "data",
+          "key": "prod_20170926T11:30:36/production_file.nc",
+          "fileName":"production_file.nc",
+          "checksum-type": "md5",
+          "checksum": "4241jafkjaj14jasjf",
+          "fileSize": 123456
+        },
+        {
+          "comment":"this file is associated with the bucket given locally, which overrules the root level (default) bucket",
+          "fileType": "browse",
+          "key": "prod_20170926T11:30:36/production_file.png",
+          "bucket":"cumulus-dev-browse-a4d38f59-5e57-590c-a2be-58640db02d91",
+          "fileName":"production_file.png",
+          "checksum-type": "md5",
+          "checksum": "addjd872342bfbf",
+          "fileSize": 12345
+        }
+      ]
+    }
 }
