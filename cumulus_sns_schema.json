@@ -28,10 +28,6 @@
       "description": "the name of the provider producing these files. This is informational only and is not used by the cumulus framework",
       "type": "string"
     },
-    "bucket": {
-      "description": "location of the s3 bucket to ingest from.",
-      "type": "string"
-    },
     "response":{
       "description": "The response message type sent. Can be a success message or error message. Akin to both the PAN and PDRD",
       "type": "object",
@@ -63,15 +59,15 @@
           "status"
       ]
     },
-    "granule": {
+    "product": {
       "type": "object",
       "properties": {
-        "granuleName": {
-          "description": "Identifier/name of the granule",
+        "name": {
+          "description": "Identifier/name of the product",
           "type": "string"
         },
         "dataVersion": {
-          "description": "Version of this granule ",
+          "description": "Version of this product",
           "type": "string"
         },
         "files": {
@@ -80,7 +76,7 @@
           "items": {
             "type": "object",
             "properties": {
-              "fileType": {
+              "type": {
                 "description": "The type of file. science files (netcdf, HDF, binary) should use the 'data' type. More can be added if need and consensus demand.",
                 "type": "string",
                 "enum": [
@@ -90,15 +86,11 @@
                   "qa"
                 ]
               },
-              "bucket": {
-                "description": "AWS bucket containing this object",
+              "uri": {
+                "description": "the URI of the file (s3://...)",
                 "type": "string"
               },
-              "key": {
-                "description": "bucket +  key = file location",
-                "type": "string"
-              },
-              "fileName": {
+              "name": {
                 "description": "The human readable filename that this file represents. ",
                 "type": "string"
               },
@@ -110,30 +102,30 @@
                 "description": "Checksum of the file.",
                 "type": "string"
               },
-              "fileSize": {
+              "size": {
                 "description": "Size, in bytes, of the file.",
                 "type": "number"
               }
             },
             "required": [
-              "fileType",
-              "key",
-              "fileSize",
+              "type",
+              "uri",
+              "size",
               "checksum",
-              "fileName"
+              "name"
             ]
           }
         }
       },
       "required": [
-        "granuleName",
+        "name",
         "dataVersion",
         "files"
       ]
     }
   },
   "oneOf": [
-    {"required": ["deliveryTime","collection", "identifier", "bucket", "granule"]},
+    {"required": ["deliveryTime","collection", "identifier", "product"]},
     {"required": ["receivedTime","ingestTime","deliveryTime","collection", "response"] }
   ]
 }

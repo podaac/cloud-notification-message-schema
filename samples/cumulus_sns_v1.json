@@ -1,30 +1,29 @@
 {
   "provider": "PODAAC_SWOT",
   "collection": "SWOT_Prod_l2:1",
-  "bucket":"cumulus-dev-a4d38f59-5e57-590c-a2be-58640db02d91",
   "ingestTime":"2017-09-30T03:45:29.791198",
   "deliveryTime":"2017-09-30T03:42:29.791198",
   "identifier": "1234-abcd-efg0-9876",
-  "granule":
+  "product":
     {
-      "granuleName": "sampleGranuleName001",
+      "name": "sampleGranuleName001",
       "dataVersion": "001",
       "files": [
         {
-          "fileType": "data",
-          "key": "prod_20170926T11:30:36/production_file.nc",
-          "fileName":"production_file.nc",
-          "checksum-type": "md5",
+          "type": "data",
+          "uri": "s3://sampleIngestBucket/prod_20170926T11:30:36/production_file.nc",
+          "name":"production_file.nc",
+          "checksumType": "md5",
           "checksum": "4241jafkjaj14jasjf",
-          "fileSize": 123456
+          "size": 123456
         },
         {
-          "fileType": "browse",
-          "key": "prod_20170926T11:30:36/production_file.png",
-          "fileName":"production_file.png",
-          "checksum-type": "md5",
+          "type": "browse",
+          "uri": "s3://sampleIngestBucket/prod_20170926T11:30:36/production_file.png",
+          "name":"production_file.png",
+          "checksumType": "md5",
           "checksum": "addjd872342bfbf",
-          "fileSize": 12345
+          "size": 12345
         }
       ]
     }
