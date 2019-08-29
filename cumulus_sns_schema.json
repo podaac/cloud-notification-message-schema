@@ -96,7 +96,7 @@
               },
               "subtype": {
                 "description": "An optional, specific implmentation of the file::type. e.g. NetCDF for a file of type 'data'",
-                "type": "string",
+                "type": "string"
               },
               "uri": {
                 "description": "the URI of the file (s3://...)",
@@ -128,7 +128,7 @@
               "uri",
               "size",
               "checksum",
-              "checksumType"
+              "checksumType",
               "name"
             ]
           }
