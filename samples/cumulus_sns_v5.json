@@ -3,7 +3,7 @@
   "provider": "PODAAC_SWOT",
   "collection": "SWOT_Prod_l2:1",
   "processCompleteTime":"2017-09-30T03:45:29.791198",
-  "deliveryTime":"2017-09-30T03:42:29.791198",
+  "submissionTime":"2017-09-30T03:42:29.791198",
   "receivedTime":"2017-09-30T03:42:31.634552",
   "identifier": "1234-abcd-efg0-9876",
   "response": {

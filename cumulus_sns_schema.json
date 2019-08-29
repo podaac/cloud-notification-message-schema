@@ -142,7 +142,7 @@
     }
   },
   "oneOf": [
-    {"required": ["version","deliveryTime","collection", "identifier", "product"]},
-    {"required": ["version","receivedTime","processCompleteTime","deliveryTime","collection", "response"] }
+    {"required": ["version","submissionTime","collection", "identifier", "product"]},
+    {"required": ["version","receivedTime","processCompleteTime","submissionTime","collection", "response"] }
   ]
 }
