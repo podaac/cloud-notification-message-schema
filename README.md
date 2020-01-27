@@ -4,6 +4,4 @@ The cumulus SNS schema is used to interface providers with cumulus/AWS ingestion
 
 ## Documentation
 
-For up to date documentation, see:
 
-[Official CNM Documentation](https://wiki.earthdata.nasa.gov/display/CUMULUS/Cloud+Notification+Mechanism)
