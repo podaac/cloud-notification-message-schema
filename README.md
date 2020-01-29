@@ -18,6 +18,8 @@ The PDR mechanism has served EOSDIS well for quite a while, and while it will co
 * JSON vs PVL
 * Stripped down required fields and overloaded data types
 
+[PDR/PAN spec](https://cdn.earthdata.nasa.gov/conduit/upload/6376/ESDS-RFC-030v1.0.pdf)
+
 ## Overview of the CNM
 
 ![Overview of CNM Message passing](resources/images/SNS_Overview_generic.png "CNM Overview")
