@@ -40,28 +40,29 @@ See https://git.earthdata.nasa.gov/projects/CUMULUS/repos/cumulus-sns-schema/br
 ### Notification Fields
 | field | required | Definition | Notes|
 |-------| ---------| ------- | ----- |
-| submissionTime |	yes |	The time the message was created (and presumably sent) to the DAAC Topic/Stream.	| |
 |version |	no	| Version of the CNM to use/parse with |	currently only 1.0 |
+| receivedTime |	no |	The time the message was received by the ingest system.	| |
+| processCompleteTime |	no |	The time processing completed by the receiving entity.	| |
+| submissionTime |	yes |	The time the message was created (and presumably sent) to the DAAC Topic/Stream.	| |
 | identifier |	yes |	Unique identifier for the message as a whole. It is the senders responsibility to ensure uniqueness. This identifier can be used in response messages to provide traceability.	|  |
 | collection |	yes |	The collection to which the granule belongs. |	This may be used if a generic SNS topic for multiple providers. |
 | provider |	no |	The provider/SIPS identifier which created this message.	| |
-| bucket |	yes |	The default S3 bucket from which to ingest. This can be overridden by specifying the 'bucket' in a given file. |	Must be readable by the DAAC. |
 | product |	yes |	A product object (typically a granule), defined below. Only a single product can be defined in each message.	|
 | trace |	no	| Information on the message or who is sending it. This is not used in the processing of the product. informational only.	|
 
 
-### Granule Fields
+### Product Fields
 
 | field | required | Definition | Notes|
 |-------| ---------| ------- | ----- |
 |name 	|yes |	The name of the product to be processed. |	Probably matches to the cumulus granule ID. |
 |dataVersion |	yes|	versions number/string of the granule.
-files	yes	an array of fileObjects the make up the granule.|	See the file::* entries for properties of a file object. |
+| files |	yes |	An array of fileObjects the make up the granule.|	See the file::* entries for properties of a file object. |
 | file::type |	yes	| The type of file. science files (netcdf, HDF, binary) should use the 'data' type. More can be added if need and consensus demand.	| Data types are defined in the 'data types' section below.|
 |file::subtype|	no	|An optional, specific implmentation of the file::type. e.g. NetCDF for a file of type 'data'	|
 |file::uri |	yes	| The URI of the file (s3://...)	|
 |file::name |	yes |	The name of the file. |	Some providers will only create hashes (to maximize read/write performance to/from S3 buckets). as object keys. We need a way to define what the object name should be, and explicitly told (not guessing). |
-|file::checksumType	|no|	Type of the checksum (e.g. md5).  Optional. If no checksumType is defined for a file, it is assumed to be md5.	||
+|file::checksumType	|yes|	Type of the checksum (e.g. md5).  Optional.	||
 | file::checksum |	yes |	Checksum of the file.	||
 |file::size |	yes|	Size, in bytes, of the file.	||
 
@@ -72,6 +73,7 @@ files	yes	an array of fileObjects the make up the granule.|	See the file::* entr
 |browse |	png, jpeg, GIBS browse images	||
 |metadata |	checksums, ODL or XML, production history	||
 |qa|	Quality Assessment files	||
+|linkage|	Linkage to another file or archive entry, generally by product identifier	||
 
 ### Response Message Fields
 Again, the response for successful granules is OPTIONAL per the ICD between the SIPS and DAAC.
