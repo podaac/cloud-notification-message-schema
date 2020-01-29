@@ -37,12 +37,13 @@ There are two types of messages valid in the CNM. The first message is the notif
 
 See https://git.earthdata.nasa.gov/projects/CUMULUS/repos/cumulus-sns-schema/browse/cumulus_sns_schema.json for an up-to-date JSON Schema.
 
-### Notification Fields
+### Notification Message Fields
+
+The below fields are for sending a CNM submission, most often from a SIPS or SDS to a DAAC (i.e. from provider to archive). For responses fields, please see "Response Message Fields" below.
+
 | field | required | Definition | Notes|
 |-------| ---------| ------- | ----- |
-|version |	no	| Version of the CNM to use/parse with |	currently only 1.0 |
-| receivedTime |	no |	The time the message was received by the ingest system.	| |
-| processCompleteTime |	no |	The time processing completed by the receiving entity.	| |
+|version |	yes	| Version of the CNM to use/parse with |	currently only 1.0 |
 | submissionTime |	yes |	The time the message was created (and presumably sent) to the DAAC Topic/Stream.	| |
 | identifier |	yes |	Unique identifier for the message as a whole. It is the senders responsibility to ensure uniqueness. This identifier can be used in response messages to provide traceability.	|  |
 | collection |	yes |	The collection to which the granule belongs. |	This may be used if a generic SNS topic for multiple providers. |
@@ -76,7 +77,7 @@ See https://git.earthdata.nasa.gov/projects/CUMULUS/repos/cumulus-sns-schema/br
 |linkage|	Linkage to another file or archive entry, generally by product identifier	||
 
 ### Response Message Fields
-Again, the response for successful granules is OPTIONAL per the ICD between the SIPS and DAAC.
+The below fields are for sending a CNM response, usually from a DAAC to a SIPS or SDS (i.e. from archive to provider). For submission fields, please see "Notification Message Fields" above. The response for successful granules is OPTIONAL per the ICD between the SIPS or SDS and DAAC. It is recommended to send a response.
 
 | field | required | Definition | Notes|
 |-------| ---------| ------- | ----- |
