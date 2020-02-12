@@ -60,14 +60,28 @@ The below fields are for sending a CNM submission, most often from a SIPS or SDS
 |-------| ---------| ------- | ----- |
 |name 	|yes |	The name of the product to be processed. |	Probably matches to the cumulus granule ID. |
 |dataVersion |	yes|	versions number/string of the granule.
-| files |	yes |	An array of fileObjects the make up the granule.|	See the file::* entries for properties of a file object. |
-| file::type |	yes	| The type of file. science files (netcdf, HDF, binary) should use the 'data' type. More can be added if need and consensus demand.	| Data types are defined in the 'data types' section below.|
-|file::subtype|	no	|An optional, specific implmentation of the file::type. e.g. NetCDF for a file of type 'data'	|
-|file::uri |	yes	| The URI of the file (s3://...)	|
-|file::name |	yes |	The name of the file. |	Some providers will only create hashes (to maximize read/write performance to/from S3 buckets). as object keys. We need a way to define what the object name should be, and explicitly told (not guessing). |
-|file::checksumType	|yes|	Type of the checksum (e.g. md5).  Optional.	||
-| file::checksum |	yes |	Checksum of the file.	||
-|file::size |	yes|	Size, in bytes, of the file.	||
+| files |	no |	An array of fileObjects the make up the granule.|	See the file entries below for properties of a file object. |
+| filegroups |	no	| One of 'files' or 'filegroups' is required. An array of filegroups to which the files of a product belong. | One of 'files' or 'filegroups' is required. Filegroups are defined in the tables below. This was initially created for GIBS as the grouping of multiple files for a specific resolution was required, and it was a simple way of ignoring file name parsing to retrieve the information. |
+
+
+### File Fields
+
+| field | required | Definition | Notes|
+|-------| ---------| ------- | ----- |
+| type |	yes	| The type of file. science files (netcdf, HDF, binary) should use the 'data' type. More can be added if need and consensus demand.	| Data types are defined in the 'data types' section below.|
+|subtype|	no	|An optional, specific implmentation of the file::type. e.g. NetCDF for a file of type 'data'	|
+|uri |	yes	| The URI of the file (s3://...)	|
+|name |	yes |	The name of the file. |	Some providers will only create hashes (to maximize read/write performance to/from S3 buckets). as object keys. We need a way to define what the object name should be, and explicitly told (not guessing). |
+|checksumType	|yes|	Type of the checksum (e.g. md5).  Optional.	||
+|checksum |	yes |	Checksum of the file.	||
+|size |	yes|	Size, in bytes, of the file.	||
+
+### Filegroups Fields
+
+| field | required | Definition | Notes|
+|-------| ---------| ------- | ----- |
+| id 	|yes |	text identifier of the filegroup |	 |
+| files |	yes |	An array of fileObjects the make up the granule.|	See the file entries above for properties of a file object. |
 
 ### Data types
 | Data Type | Example Files | Notes |
