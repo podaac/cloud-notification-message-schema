@@ -72,13 +72,17 @@
       ]
     }
   },
-  "title": "Cloud Notification Message (cnm) v1.0 ",
+  "title": "Cloud Notification Message (cnm) 1.1 ",
   "description": "A message format to trigger or respond to processing. Version 1.1",
   "type": "object",
   "properties": {
     "version":{
       "description" : "The CNM Version used. e.g. 'v1.1'",
-      "type":"string"
+      "type":"string",
+      "enum": [
+        "1.0",
+        "1.1"
+      ]
     },
     "receivedTime": {
       "description": "Time message was received by the ingest system",

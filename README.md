@@ -45,7 +45,7 @@ The below fields are for sending a CNM submission, most often from a SIPS or SDS
 
 | field | required | Definition | Notes|
 |-------| ---------| ------- | ----- |
-|version |	yes	| Version of the CNM to use/parse with |	currently only 1.0 |
+|version |	yes	| Version of the CNM to use/parse with |	1.0 or 1.1 |
 | submissionTime |	yes |	The time the message was created (and presumably sent) to the DAAC Topic/Stream.	| |
 | identifier |	yes |	Unique identifier for the message as a whole. It is the senders responsibility to ensure uniqueness. This identifier can be used in response messages to provide traceability.	|  |
 | collection |	yes |	The collection to which the granule belongs. |	This may be used if a generic SNS topic for multiple providers. |

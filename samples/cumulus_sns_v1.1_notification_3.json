@@ -1,5 +1,5 @@
 {
-  "version":"v1.0",
+  "version":"1.1",
   "comment":"This represents a grnaule that has files in multiple buckets",
   "provider": "PODAAC_SWOT",
   "collection": "SWOT_Prod_l2:1",
