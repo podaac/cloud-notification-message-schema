@@ -161,8 +161,8 @@
         }
       },
       "oneOf": [
-        {"required": ["name","dataVersion","files"]},
-          {"required": ["name","dataVersion","filegroups"]}
+        {"required": ["name","files"]},
+          {"required": ["name","filegroups"]}
       ]
     }
   },
