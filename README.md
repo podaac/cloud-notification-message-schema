@@ -59,7 +59,7 @@ The below fields are for sending a CNM submission, most often from a SIPS or SDS
 | field | required | Definition | Notes|
 |-------| ---------| ------- | ----- |
 |name 	|yes |	The name of the product to be processed. |	Probably matches to the cumulus granule ID. |
-|dataVersion |	yes|	versions number/string of the granule.
+|dataVersion |	no |	versions number/string of the granule.
 | files |	no |	An array of fileObjects the make up the granule.|	See the file entries below for properties of a file object. |
 | filegroups |	no	| One of 'files' or 'filegroups' is required. An array of filegroups to which the files of a product belong. | One of 'files' or 'filegroups' is required. Filegroups are defined in the tables below. This was initially created for GIBS as the grouping of multiple files for a specific resolution was required, and it was a simple way of ignoring file name parsing to retrieve the information. |
 
