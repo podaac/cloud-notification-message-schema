@@ -72,12 +72,12 @@
       ]
     }
   },
-  "title": "Cloud Notification Message (cnm) 1.1 ",
-  "description": "A message format to trigger or respond to processing. Version 1.1",
+  "title": "Cloud Notification Message (cnm) 1.2 ",
+  "description": "A message format to trigger or respond to processing. Version 1.2",
   "type": "object",
   "properties": {
     "version":{
-      "description" : "The CNM Version used. e.g. 'v1.1'",
+      "description" : "The CNM Version used. e.g. 'v1.2'",
       "type":"string",
       "enum": [
         "1.0",
@@ -123,6 +123,20 @@
             "SUCCESS",
             "FAILURE"
           ]
+        },
+        "ingestionMetadata":{
+          "description":"Object defining ingestion metadata, like CMR Concept IDs, URLS, etc",
+          "type": "object",
+          "properties": {
+            "catalogId":{
+              "description":"Identifier for catalog",
+              "type":"string"
+            },
+            "catalogUrl":{
+              "description":"URL of catalog entry",
+              "type":"string"
+            }
+          }
         },
         "errorCode": {
           "description":"Error message. Success messages can be ignored.",
