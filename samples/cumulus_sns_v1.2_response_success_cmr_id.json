@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "provider": "PODAAC_SWOT",
+  "collection": "SWOT_Prod_l2:1",
+  "processCompleteTime":"2017-09-30T03:45:29.791198",
+  "receivedTime":"2017-09-30T03:42:31.634552",
+  "submissionTime":"2017-09-30T03:42:29.791198",
+  "identifier": "1234-abcd-efg0-9876",
+  "response": {
+    "status":"SUCCESS",
+    "ingestionMetadata":{
+      "catalogId":"G1226018937-POCUMULUS",
+      "catalogUrl":"https://cmr.uat.earthdata.nasa.gov:443/search/concepts/G1226018937-POCUMULUS/1"
+    }
+  }
+}
