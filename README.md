@@ -109,7 +109,7 @@ The below fields are for sending a CNM response, usually from a DAAC to a SIPS o
 | field | required | Definition | Notes|
 |-------| ---------| ------- | ----- |
 |status |	yes |	"SUCCESS" or "FAILURE"	||
-|errorCode |	no |	"VALIDATION_ERROR", "ACCESS_ERROR", "PROCESSING_ERROR" |	Not required, unless this response is for an error |
+|errorCode |	no |	"VALIDATION_ERROR", "ACCESS_ERROR", "PROCESSING_ERROR", "TRANSFER_ERROR" |	Not required, unless this response is for an error |
 | errorMessage	| no |	A more descriptive message for failure than the above code. This could be a stack trace or a human readble message: file size mismatch, or "file not found on host system". |	Not required, unless this respone is for an error |
 
 ## Best Practices
