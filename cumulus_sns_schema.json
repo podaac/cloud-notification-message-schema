@@ -77,12 +77,13 @@
   "type": "object",
   "properties": {
     "version":{
-      "description" : "The CNM Version used. e.g. 'v1.2'",
+      "description" : "The CNM Version used. e.g. '1.3'",
       "type":"string",
       "enum": [
         "1.0",
         "1.1",
-        "1.2"
+        "1.2",
+        "1.3"
       ]
     },
     "receivedTime": {
