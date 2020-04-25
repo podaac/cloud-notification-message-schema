@@ -45,7 +45,7 @@ The below fields are for sending a CNM submission, most often from a SIPS or SDS
 
 | field | required | Definition | Notes|
 |-------| ---------| ------- | ----- |
-|version |	yes	| Version of the CNM to use/parse with |	1.0 or 1.1 |
+|version |	yes	| Version of the CNM to use/parse with |	1.0, 1.1, 1.2, 1.3 |
 | submissionTime |	yes |	The time the message was created (and presumably sent) to the DAAC Topic/Stream.	| |
 | identifier |	yes |	Unique identifier for the message as a whole. It is the senders responsibility to ensure uniqueness. This identifier can be used in response messages to provide traceability.	|  |
 | collection |	yes |	The collection to which the granule belongs. |	This may be used if a generic SNS topic for multiple providers. |
@@ -109,13 +109,22 @@ The below fields are for sending a CNM response, usually from a DAAC to a SIPS o
 | field | required | Definition | Notes|
 |-------| ---------| ------- | ----- |
 |status |	yes |	"SUCCESS" or "FAILURE"	||
-|errorCode |	no |	"VALIDATION_ERROR", "ACCESS_ERROR", "PROCESSING_ERROR" |	Not required, unless this response is for an error |
+|errorCode |	no |	"VALIDATION_ERROR", "PROCESSING_ERROR", "TRANSFER_ERROR" |	Not required, unless this response is for an error |
 | errorMessage	| no |	A more descriptive message for failure than the above code. This could be a stack trace or a human readble message: file size mismatch, or "file not found on host system". |	Not required, unless this respone is for an error |
 
 ## Best Practices
-* Topics should be owned by the group receving the messages. In the example given above, the SNS topic used in step 3 would be owned and maintained by the DAAC. Likewise, the response topic in step 7 & 8  would be owned and maintained by the SDS or SIPS.
+* Topics should be owned by the group receiving the messages. In the example given above, the SNS topic used in step 3 would be owned and maintained by the DAAC. Likewise, the response topic in step 7 & 8  would be owned and maintained by the SDS or SIPS.
 * A single topic should be able to support multiple collection types. That is, a SIPS or SDS may send messages for multiple collections to a single topic. See below image.
 * Unless there is a pressing reason not to, the response message should be used in cases of both success and failures, even though success responses are optional.
+* It is recommended to store erroneous messages in a persistent storage mechanism, such as S3, for the life of the project.
+* It is recommended to store all messages in a persistent storage mechanism, such as S3, for at least 30 days.
+* Optionally, storing incoming and response messages in something like an ELK stack allows simple querying, status, and latency metrics to be calculated.
+* If the message received from a queue, topic, or stream is unparseable, e.g. doesn't validate or an error occurs, try and capture as much information from the CNM as possible. Attempt to capture the `identifier` and issue a CNM response detailing the failure using a 'VALIDATION_ERROR' along with the text of the offending message.
+* if the identifier cannot be read from an invalid message, using the AWS identifier of the message can be used as a 'identifier of last hope'. Full message and other pertinent details should be included in the CNM Response
+* Ensure best practices for the communication mechanism in use:
+  * SNS Topics should be backed by an AWS Simple Queue Service
+  * SQS Topics should have a dead-letter-queue associated with them for processing issues
+  * Kinesis streams should be able to recover from [stream batch errors](https://aws.amazon.com/about-aws/whats-new/2019/11/aws-lambda-supports-failure-handling-features-for-kinesis-and-dynamodb-event-sources/).
 
 ![Single Topic Processing](resources/images/SNS_single_topic.png "Single CNM Topic")
 
