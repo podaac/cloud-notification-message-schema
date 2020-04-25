@@ -144,7 +144,6 @@
           "type":"string",
           "enum": [
             "VALIDATION_ERROR",
-            "ACCESS_ERROR",
             "PROCESSING_ERROR",
             "TRANSFER_ERROR"
           ]
