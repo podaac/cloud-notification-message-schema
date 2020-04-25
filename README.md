@@ -45,7 +45,7 @@ The below fields are for sending a CNM submission, most often from a SIPS or SDS
 
 | field | required | Definition | Notes|
 |-------| ---------| ------- | ----- |
-|version |	yes	| Version of the CNM to use/parse with |	1.0 or 1.1 |
+|version |	yes	| Version of the CNM to use/parse with |	1.0, 1.1, 1.2, 1.3 |
 | submissionTime |	yes |	The time the message was created (and presumably sent) to the DAAC Topic/Stream.	| |
 | identifier |	yes |	Unique identifier for the message as a whole. It is the senders responsibility to ensure uniqueness. This identifier can be used in response messages to provide traceability.	|  |
 | collection |	yes |	The collection to which the granule belongs. |	This may be used if a generic SNS topic for multiple providers. |
@@ -109,7 +109,7 @@ The below fields are for sending a CNM response, usually from a DAAC to a SIPS o
 | field | required | Definition | Notes|
 |-------| ---------| ------- | ----- |
 |status |	yes |	"SUCCESS" or "FAILURE"	||
-|errorCode |	no |	"VALIDATION_ERROR", "ACCESS_ERROR", "PROCESSING_ERROR", "TRANSFER_ERROR" |	Not required, unless this response is for an error |
+|errorCode |	no |	"VALIDATION_ERROR", "PROCESSING_ERROR", "TRANSFER_ERROR" |	Not required, unless this response is for an error |
 | errorMessage	| no |	A more descriptive message for failure than the above code. This could be a stack trace or a human readble message: file size mismatch, or "file not found on host system". |	Not required, unless this respone is for an error |
 
 ## Best Practices
