@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### changed
 * Removed 'required' fields CHECKSUM and CHECKSUM_TYPE from the file schema
 * Added SHA-2 family checksum type to schema
+* Added SHA-256, SHA-512 checksum types to schema
 ### Deprecated
 ### Removed
 ### Fixed
