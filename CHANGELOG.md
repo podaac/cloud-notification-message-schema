@@ -5,6 +5,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.4.1] - 2020-08-17
+### Added
+### changed
+* Removed dash from SHA checksumType values to be compatible with Cumulus sync-granule task.
+### Deprecated
+### Removed
+### Fixed
+### Security
+
 ## [1.4] - 2020-08-12
 ### Added
 ### changed
