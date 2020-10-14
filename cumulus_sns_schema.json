@@ -91,15 +91,18 @@
     },
     "receivedTime": {
       "description": "Time message was received by the ingest system",
-      "type":"string"
+      "type":"string",
+      "format":"date-time"
     },
     "processCompleteTime": {
       "description": "The time processing completed by the receiving entity.",
-      "type":"string"
+      "type":"string",
+      "format":"date-time"
     },
     "submissionTime": {
       "description": "The time the message was created (and presumably sent) to the publication mechanism.",
-      "type":"string"
+      "type":"string",
+      "format":"date-time"
     },
     "identifier": {
       "description":"Unique identifier for the message as a whole. It is the senders responsibility to ensure uniqueness. This identifier can be used in response messages to provide tracability.",
