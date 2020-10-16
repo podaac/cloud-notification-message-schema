@@ -66,9 +66,11 @@ def process(project_dir:str) -> None:
 
     # create version.txt
     logger.info('Opening and writing version.txt with release version: '.format(release_version))
-    f = open(os.path.join(project_dir,'version.txt'), "w")
+    version_file:str = os.path.join(project_dir,'version.txt')
+    f = open(version_file, "w")
     f.write(release_version)
     f.close()
+    os.system('chmod 777 {}'.format(version_file))
     logger.info('Version.txt created')
 
 
