@@ -12,38 +12,7 @@ logger:object = logging.getLogger('Artifact Builder ===>')
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 class builder:
     def __init__(self, *args, **kwargs) -> None:
-        print('CMR Query object created')
-
-    def find_executable(self, executable, path=None):
-        """Tries to find 'executable' in the directories listed in 'path'.
-
-        A string listing directories separated by 'os.pathsep'; defaults to
-        os.environ['PATH'].  Returns the complete filename or None if not found.
-        """
-        if path is None:
-            path = os.environ.get('PATH', os.defpath)
-
-        paths = path.split(os.pathsep)
-        base, ext = os.path.splitext(executable)
-
-        if (sys.platform == 'win32' or os.name == 'os2') and (ext != '.exe'):
-            executable = executable + '.exe'
-
-        if not os.path.isfile(executable):
-            for p in paths:
-                f = os.path.join(p, executable)
-                if os.path.isfile(f):
-                    # the file exists, we have a shot at spawn working
-                    return f
-            return None
-        else:
-            return executable
-
-    def clean_up(self, project_dir:str):
-        target_dir = os.path.join(project_dir, 'target')
-        build_dir = os.path.join(project_dir, 'build')
-        os.system('rm -Rf {}'.format(target_dir))
-        os.system('rm -Rf {}'.format(build_dir))
+        print('Builder started')
 
 @click.command()
 @click.option('-d', '--project-dir',
