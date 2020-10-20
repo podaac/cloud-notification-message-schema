@@ -17,16 +17,23 @@ class builder:
 @click.command()
 @click.option('-d', '--project-dir',
               help='Project working directory', required=True, type=str)
-def process(project_dir:str) -> None:
+@click.option('-a', '--artifact-base-name',
+              help='artifact base name without .zip. Ex. cnmToGranule', required=True, type=str)
+def process(project_dir:str, artifact_base_name:str) -> None:
     '''
         this entire process is meant to run either through command line or inside a docker container
         which contains java 8, python 3 , pipe and zip utilities.
     '''
     logger.info('project directory:{}'.format('project_dir'))
-    builder_o = builder()
+    logger.info('artifact name: {}'.format(artifact_base_name))
     os.system('pwd')
     os.chdir(project_dir)
+    logger.info('Starting to zip up directory')
+    os.system('zip -r /tmp/{}.zip . -x builder/\\* cache/\\* gradle/\\* release/\\* target/\\* build/\\* .git/\\*'
+              .format(artifact_base_name))
+    os.system('mv /tmp/{}.zip {}'.format(artifact_base_name, project_dir))
     os.system('pwd')
+
     with open(os.path.join(project_dir, 'cumulus_sns_schema.json')) as f:
         json_schema:Dict = json.load(f)
     versions:List = json_schema['properties']['version']['enum']
