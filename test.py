@@ -1,5 +1,7 @@
 """
 Validate all CNM Sample messages in samples/ against the CNM JSON Schema
+
+Note: date-time format won't be validated unless the following dependency is installed: strict-rfc3339
 """
 
 import os
