@@ -24,7 +24,7 @@ def process(project_dir:str, artifact_base_name:str) -> None:
         this entire process is meant to run either through command line or inside a docker container
         which contains java 8, python 3 , pipe and zip utilities.
     '''
-    logger.info('project directory:{}'.format('project_dir'))
+    logger.info('project directory:{}'.format(project_dir))
     logger.info('artifact name: {}'.format(artifact_base_name))
     os.system('pwd')
     os.chdir(project_dir)
