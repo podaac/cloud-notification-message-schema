@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.1] - 2020-11-10
+### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+- **PODAAC-2733**
+  - Updated the CNM schema so product can be used in either the CNM notification or CNM response. 
+### Security
+
 ## [1.5] - 2020-10-22
 ### Added
 - **PODAAC-2541**
