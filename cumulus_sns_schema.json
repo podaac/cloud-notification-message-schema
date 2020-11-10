@@ -194,7 +194,12 @@
     }
   },
   "oneOf": [
-    {"required": ["version","submissionTime","collection", "identifier", "product"]},
+    {
+      "required": ["version","submissionTime","collection", "identifier", "product"],
+      "not": {
+        "required": ["response"]
+      }
+    },
     {"required": ["version","receivedTime","processCompleteTime","submissionTime","identifier","collection", "response"] }
   ]
 }
