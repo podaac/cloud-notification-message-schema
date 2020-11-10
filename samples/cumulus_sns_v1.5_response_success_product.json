@@ -1,0 +1,43 @@
+{
+  "version": "1.5",
+  "provider": "PODAAC",
+  "submissionTime": "2020-11-06T17:17:29.339531Z",
+  "collection": "MODIS_A-JPL-L2P-v2019.0",
+  "identifier": "f2d5aca2-2053-11eb-8e6f-acde48001122",
+  "trace": "NCMODIS_A-JPL-L2P-v2019.01",
+  "product": {
+    "dataVersion": "2019.0",
+    "files": [
+      {
+        "type": "data",
+        "name": "20200101000000-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0.nc",
+        "uri": "https://es3uvapgyg.execute-api.us-west-2.amazonaws.com:9000/DEV/podaac-sndbx-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20200101000000-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0.nc",
+        "checksumType": "md5",
+        "checksum": "aa5204f125ae83847b3b80fa2e571b00",
+        "size": 18232098
+      },
+      {
+        "type": "metadata",
+        "name": "20200101000000-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0.nc.md5",
+        "uri": "https://es3uvapgyg.execute-api.us-west-2.amazonaws.com:9000/DEV/podaac-sndbx-cumulus-public/MODIS_A-JPL-L2P-v2019.0/20200101000000-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0.nc.md5",
+        "size": 98
+      },
+      {
+        "type": "metadata",
+        "name": "20200101000000-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0.cmr.json",
+        "uri": "https://es3uvapgyg.execute-api.us-west-2.amazonaws.com:9000/DEV/podaac-sndbx-cumulus-public/MODIS_A-JPL-L2P-v2019.0/20200101000000-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0.cmr.json",
+        "size": 1633
+      }
+    ],
+    "name": "20200101000000-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0"
+  },
+  "receivedTime": "2020-11-06T17:18:49.506Z",
+  "response": {
+    "status": "SUCCESS",
+    "ingestionMetadata": {
+      "catalogId": "G1238611022-POCUMULUS",
+      "catalogUrl": "https://cmr.uat.earthdata.nasa.gov/search/granules.json?concept_id=G1238611022-POCUMULUS"
+    }
+  },
+  "processCompleteTime": "2020-11-06T17:21:13.523Z"
+}
