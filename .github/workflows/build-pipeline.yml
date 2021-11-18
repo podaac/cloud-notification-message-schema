@@ -74,7 +74,7 @@ jobs:
           echo "software_version=$new_ver" >> $GITHUB_ENV
       - name: Update Version
         run: |
-          python3 update-version.py -f cumulus_sns_schema.json -v ${{ env.software_version }}
+          python3 builder/update-version.py -f cumulus_sns_schema.json -v ${{ env.software_version }}
       - name: Build new version
         run: |
           echo "New Version is: ${{ env.software_version }}"
