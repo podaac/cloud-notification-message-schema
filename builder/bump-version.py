@@ -11,14 +11,14 @@ import click
               help='gets the base version', is_flag=True, default=False, required=False)
 
 # sample version
-# 1.2.3-alpha.0-SNAPSHOT
+# 1.2.3-alpha.0
 # 1.2.3
 # 1.2.3+xy3z
 # 1.2.3-rc.1
 # 1.2.3-SNAPSHOT
 def bumpy(version:str, get_base):
     rc_reg = '.*rc\.\d+$'
-    dev_reg = '.*alpha\.\d+.*'
+    dev_reg = '.*alpha\.\d+$'
     snap_reg = '.*SNAPSHOT$'
     sha_reg = '.*\+.*'
 
@@ -31,7 +31,7 @@ def bumpy(version:str, get_base):
         if get_base:
             return print(version.split('-alpha')[0].strip())
         else:
-            return print(int(version.split('-alpha.')[1].split('-')[0]) + 1)
+            return print(int(version.split('-alpha.')[1]) + 1)
     elif re.match(snap_reg, version):
             return print(version.split('-SNAPSHOT')[0].strip())
     elif re.match(sha_reg, version):

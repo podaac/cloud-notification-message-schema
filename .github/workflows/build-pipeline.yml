@@ -54,7 +54,7 @@ jobs:
           if [[ "$bump_ver" == "None" ]]; then
             bump_ver='0'
           fi
-          new_ver="${base_ver}-alpha.${bump_ver}-SNAPSHOT"
+          new_ver="${base_ver}-alpha.${bump_ver}"
           echo "software_version=$new_ver" >> $GITHUB_ENV
       - name: Bump rc version
         # If triggered by push to a release branch
