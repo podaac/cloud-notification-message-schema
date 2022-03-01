@@ -3,7 +3,7 @@ import json
 import datetime
 
 
-class CNM:
+class CloudNotificationMessage:
     cnm_version: str
     granule: str
     collection: str
@@ -13,7 +13,7 @@ class CNM:
     trace: str
     product: dict
 
-    def __init__(self, dataset, file_metadata, data_version, provider, cnm_version='1.5', granule_name=None):
+    def __init__(self, dataset, file_metadata, data_version, provider, cnm_version='1.5', granule_name=None, trace=None):
         """
         This class models a cloud notification message, 'submission' message.
         Adapted from NASA/JPL/PO.DAAC ingest and archive dev tools
@@ -37,6 +37,7 @@ class CNM:
             the data file name (without extension) is used
         """
 
+        self.trace = trace
         self.cnm_version = cnm_version
         self.collection = dataset
         self.granule = granule_name
@@ -49,6 +50,7 @@ class CNM:
         if self.data_version is not None:
             self.product.update(dataVersion=self.data_version)
 
+        # populate the bulk of the final message dict now
         self.message = dict(
             version=self.cnm_version,
             provider=self.provider,
@@ -57,6 +59,10 @@ class CNM:
             identifier=self.granule,
             product=self.product
         )
+
+        # If the user provided a trace field, add that to the message
+        if self.trace is not None:
+            self.message['trace'] = self.trace
 
     def parse_files(self):
         """
