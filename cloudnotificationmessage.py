@@ -3,6 +3,14 @@ import json
 import datetime
 
 
+def checksum_valid(checksum):
+    return checksum in {'md5', 'SHA1', 'SHA2', 'SHA256', 'SHA512'}
+
+
+def filetype_valid(file_type):
+    return file_type in {'data', 'browse', 'metadata', 'ancillary', 'linkage'}
+
+
 class CloudNotificationMessage:
     cnm_version: str
     granule: str
@@ -13,7 +21,8 @@ class CloudNotificationMessage:
     trace: str
     product: dict
 
-    def __init__(self, dataset, file_metadata, data_version, provider, cnm_version='1.5', granule_name=None, trace=None):
+    def __init__(self, dataset, file_metadata, data_version, provider, cnm_version='1.5.1', granule_name=None,
+                 trace=None):
         """
         This class models a cloud notification message, 'submission' message.
         Adapted from NASA/JPL/PO.DAAC ingest and archive dev tools
@@ -25,7 +34,7 @@ class CloudNotificationMessage:
         file_metadata : list, dict
             A list of dictionaries, where each dictionary has the following:
                 required attributes: uri (str), size (int), type (dict)
-                optional attributes: subtype (dict) and checksum (str)
+                optional attributes: subtype (str) and checksum (str)
         data_version: str
             Version of the granule
         provider: str
@@ -73,10 +82,17 @@ class CloudNotificationMessage:
         dict
             the 'product' section for the CNM submission object.
         """
+
+        for file in self.files:
+            if not filetype_valid(file['type']):
+                # skip and remove this invalid file entry
+                self.files.remove(file)
+
         for file in self.files:
             file['name'] = os.path.basename(file['uri'])
             if file.get('checksum'):
-                file['checksumType'] = 'md5'
+                if checksum_valid(file['checksum']):
+                    file['checksumType'] = file['checksum']
                 file.pop('checksum')
             if file.get('type') == 'data' and self.granule is None:
                 self.granule, _ = os.path.splitext(file['name'])

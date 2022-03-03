@@ -44,7 +44,13 @@ cnm_test_granule_checksum = dict(
     uri="s3://podaac-dev-cumulus-test-input-v2/OISSS_L4_multimission_monthly_v1/OISSS_L4_multimission_global_monthly_v1.0_2013-08.nc.md5",
     size=86
 )
+cnm_test_invalid_type = dict(
+    type="invalid",
+    uri="something_invalid",
+    size=1234
+)
 cnm_test_files.append(cnm_test_granule_data)
+cnm_test_files.append(cnm_test_invalid_type)
 cnm_test_files.append(cnm_test_granule_checksum)
 test_cnm = CloudNotificationMessage(cnm_test_dataset, cnm_test_files, cnm_test_data_version, cnm_test_provider)
 
