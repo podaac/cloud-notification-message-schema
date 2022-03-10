@@ -91,7 +91,7 @@
         "1.4.1",
         "1.5",
         "1.5.1",
-        "1.5.2-alpha.1"
+        "1.6.0-alpha.0"
       ]
     },
     "receivedTime": {
@@ -179,6 +179,14 @@
         "dataVersion": {
           "description": "Version of this product",
           "type": "string"
+        },
+        "dataProcessingType": {
+          "description": "The type of data processing stream that generated the product",
+          "type": "string",
+          "enum": [
+            "forward",
+            "reprocessing"
+          ]
         },
         "files": {
           "description": "array of files that make up this product",
