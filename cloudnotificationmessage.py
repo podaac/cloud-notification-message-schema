@@ -66,7 +66,7 @@ class CloudNotificationMessage:
 
         # add data processing type to product if provided/specified
         if self.data_processing_type is not None and data_processing_type_valid(self.data_processing_type):
-            self.product.update(dataVersion=self.data_version)
+            self.product.update(dataProcessingType=self.data_processing_type)
 
         # populate the bulk of the final message dict now
         self.message = dict(
