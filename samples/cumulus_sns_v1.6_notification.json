@@ -1,0 +1,29 @@
+{
+  "version":"1.6.0",
+  "provider": "PODAAC_SWOT",
+  "collection": "SWOT_Prod_l2:1",
+  "submissionTime":"2020-07-28T04:48:22.405460Z",
+  "identifier": "1234-abcd-efg0-9876",
+  "product":
+    {
+      "name": "sampleGranuleName001",
+      "dataVersion": "001",
+      "dataProcessingType": "forward",
+      "files": [
+        {
+          "type": "data",
+          "uri": "s3://sampleIngestBucket/prod_20170926T11:30:36/production_file.nc",
+          "name":"production_file.nc",
+          "size": 123456
+        },
+        {
+          "type": "browse",
+          "uri": "s3://sampleIngestBucket/prod_20170926T11:30:36/production_file.png",
+          "name":"production_file.png",
+          "checksum":"12312312312313",
+          "checksumType":"SHA512",
+          "size": 12345
+        }
+      ]
+    }
+}

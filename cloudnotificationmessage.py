@@ -11,6 +11,9 @@ def filetype_valid(file_type):
     return file_type in {'data', 'browse', 'metadata', 'ancillary', 'linkage'}
 
 
+def data_processing_type_valid(file_type):
+    return file_type in {'forward', 'reprocessing'}
+
 class CloudNotificationMessage:
     cnm_version: str
     granule: str
@@ -20,9 +23,10 @@ class CloudNotificationMessage:
     provider: str
     trace: str
     product: dict
+    data_processing_type: dict
 
-    def __init__(self, dataset, file_metadata, data_version, provider, cnm_version='1.5.1', granule_name=None,
-                 trace=None):
+    def __init__(self, dataset, file_metadata, data_version, provider, cnm_version='1.6.0', granule_name=None,
+                 data_processing_type=None, trace=None):
         """
         This class models a cloud notification message, 'submission' message.
         Adapted from NASA/JPL/PO.DAAC ingest and archive dev tools
@@ -52,6 +56,7 @@ class CloudNotificationMessage:
         self.granule = granule_name
         self.files = file_metadata
         self.data_version = data_version
+        self.data_processing_type = data_processing_type
         self.provider = provider
         self.product = self.parse_files()
 
@@ -59,12 +64,16 @@ class CloudNotificationMessage:
         if self.data_version is not None:
             self.product.update(dataVersion=self.data_version)
 
+        # add data processing type to product if provided/specified
+        if self.data_processing_type is not None and data_processing_type_valid(self.data_processing_type):
+            self.product.update(dataProcessingType=self.data_processing_type)
+
         # populate the bulk of the final message dict now
         self.message = dict(
             version=self.cnm_version,
             provider=self.provider,
             collection=self.collection,
-            submissionTime=datetime.datetime.utcnow().isoformat(),
+            submissionTime=datetime.datetime.utcnow().isoformat() + 'Z',
             identifier=self.granule,
             product=self.product
         )
