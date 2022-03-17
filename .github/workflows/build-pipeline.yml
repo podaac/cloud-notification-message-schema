@@ -33,6 +33,7 @@ jobs:
         run: |
           pip3 install -r builder/requirements.txt
           pip3 install --upgrade build
+          pip3 install --upgrade wheel
       - name: Get Version
         run: echo ::set-output name=current_version::$(python3 builder/get-version.py -f cumulus_sns_schema.json)
         id: get-version
