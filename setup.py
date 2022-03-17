@@ -20,6 +20,9 @@ setup(
             'pytest==5.3.5'
         ]
     },
-    packages=find_packages(exclude=['tests']),
+    packages=['.'],
+    package_data={
+       'samples': ['*.json']
+    },
     include_package_data=True
 )
