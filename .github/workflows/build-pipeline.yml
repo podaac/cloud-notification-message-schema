@@ -143,6 +143,7 @@ jobs:
           asset_name: "${{ env.ARTIFACT_FILE }}"
           asset_content_type: application/zip
       - name: Publish to PyPI
+        if: ${{ !startsWith(github.ref, 'refs/heads/feature/') }}
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
