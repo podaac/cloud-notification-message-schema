@@ -37,7 +37,7 @@ Upon completion, a CNM Response messages can optionally be sent to a previously 
 ## Specification
 There are two types of messages valid in the CNM. The first message is the notification of new data to a DAAC. The second is the optional response message sent from a DAAC to a SIPS.
 
-See https://git.earthdata.nasa.gov/projects/CUMULUS/repos/cumulus-sns-schema/browse/cumulus_sns_schema.json for an up-to-date JSON Schema.
+See https://git.earthdata.nasa.gov/projects/CUMULUS/repos/cumulus-sns-schema/browse/cumulus_sns_schema.json for an up-to-date JSON Schema.
 
 ### Notification Message Fields
 
