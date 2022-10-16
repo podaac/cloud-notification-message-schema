@@ -48,7 +48,7 @@ The below fields are for sending a CNM submission, most often from a SIPS or SDS
 |version |	yes	| Version of the CNM to use/parse with |	1.0, 1.1, 1.2, 1.3 |
 | submissionTime |	yes |	The time the message was created (and presumably sent) to the DAAC Topic/Stream.	| |
 | identifier |	yes |	Unique identifier for the message as a whole. It is the senders responsibility to ensure uniqueness. This identifier can be used in response messages to provide traceability.	|  |
-| collection |	yes |	The collection to which the granule belongs. |	This may be used if a generic SNS topic for multiple providers. |
+| collection |	yes |	The collection to which the granule belongs. |	This may be used if a generic SNS topic for multiple providers. <br> It can be either a string for the collection short name (e.g. <i> GLDAS_NOAH025_3H </i>), or a JSON object including the collection name and version (e.g. <i> {"name":"GLDAS_NOAH025_3H", "version":"2.0"} </i>). |
 | provider |	no |	The provider/SIPS identifier which created this message.	| |
 | product |	yes |	A product object (typically a granule), defined below. Only a single product can be defined in each message.	|
 | trace |	no	| Information on the message or who is sending it. This is not used in the processing of the product. informational only.	|
