@@ -110,7 +110,7 @@
         "1.5",
         "1.5.1",
         "1.6.0",
-        "1.6.1"
+        "1.6.1-alpha.0"
       ]
     },
     "receivedTime": {
@@ -135,8 +135,12 @@
     "collection": {
       "description": "The collection to which these granules will belong.",
       "anyOf": [
-        { "type": "string" },
-        { "$ref": "#/definitions/collection" }
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "#/definitions/collection"
+        }
       ]
     },
     "provider": {
