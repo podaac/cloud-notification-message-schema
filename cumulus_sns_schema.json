@@ -73,6 +73,24 @@
         "id",
         "files"
       ]
+    },
+    "collection": {
+      "description": "The collection short name and version.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "collection short name."
+        },
+        "version": {
+          "type": "string",
+          "description": "collection version."
+        }
+      },
+      "required": [
+        "name",
+        "version"
+      ]
     }
   },
   "title": "Cloud Notification Message (cnm) 1.2 ",
@@ -91,7 +109,8 @@
         "1.4.1",
         "1.5",
         "1.5.1",
-        "1.6.0"
+        "1.6.0",
+        "1.6.1-alpha.0"
       ]
     },
     "receivedTime": {
@@ -115,7 +134,14 @@
     },
     "collection": {
       "description": "The collection to which these granules will belong.",
-      "type": "string"
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "#/definitions/collection"
+        }
+      ]
     },
     "provider": {
       "description": "the name of the provider (e.g. SIP, SDS, etc. ) producing these files.",
