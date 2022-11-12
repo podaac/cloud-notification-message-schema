@@ -32,6 +32,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip3 install -r builder/requirements.txt
+          python3 -m pip install setuptools wheel twine
       - name: Get Version
         run: echo ::set-output name=current_version::$(python3 builder/get-version.py -f cumulus_sns_schema.json)
         id: get-version
@@ -82,6 +83,9 @@ jobs:
           echo "New Version is: ${{ env.software_version }}"
           python3 builder/update-version.py -f cumulus_sns_schema.json -v ${{ env.software_version }}
           python3 builder/builder.py -d . -a ${{env.ARTIFACT_BASE_NAME}}
+      - name: Build Python package
+        run: |
+          python3 setup.py sdist bdist_wheel
       - name: Prepare Artifacts
         run: |
           artifact_file_name="${{ env.ARTIFACT_BASE_NAME }}-${{ env.software_version }}.zip"
@@ -138,6 +142,12 @@ jobs:
           asset_path: "${{ env.ARTIFACT_FILE }}"
           asset_name: "${{ env.ARTIFACT_FILE }}"
           asset_content_type: application/zip
+      - name: Publish to PyPI
+        if: ${{ !startsWith(github.ref, 'refs/heads/feature/') }}
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
       - name: Commit Version Bump
         # If building develop, a release branch, or master then we commit the version bump back to the repo
         if: |
